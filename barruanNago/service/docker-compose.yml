@@ -1,0 +1,16 @@
+#KONTUZ EGITEKE, soilik pasapasatik kopiatuta
+
+version: '3'
+services:
+    web:
+        build:
+            context: ./web
+            dockerfile: Dockerfile
+        ports:
+            - "9797:80"
+    ssh:
+        build:
+            context: ./ssh
+            dockerfile: Dockerfile
+        ports:
+            - "8822:22"
