@@ -1,11 +1,13 @@
 FROM ubuntu:latest
 RUN apt update && apt install -y openssh-server
 
-# Create user
-RUN useradd -m dev1 && echo "dev1:w3ar3h4ck3r2" | chpasswd
+RUN apt-get install -y python3-scapy
+RUN apt-get install -y tcpdump
 
-# Configure SSH
+COPY ./echoRequestSend.py /usr/src/echoRequestSend.py
+
+
+# Configure SSH  Xabat
 RUN mkdir /var/run/sshd
-
-# Start SSH server
+# Start SSH server Xabat
 CMD ["/usr/sbin/sshd", "-D"]

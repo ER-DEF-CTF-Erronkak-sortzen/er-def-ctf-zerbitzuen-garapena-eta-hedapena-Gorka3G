@@ -1,0 +1,23 @@
+
+1-. Unean dockerra Xabat-en sshdkin zabaltzen da. Kendu
+2-. dockerrera komando minirepasoa:
+
+ocker build -t def .
+docker run def
+docker exec -ti 2323423423423432 /bin/bash
+3-. docker barruam:
+        / karpetan ls egiteko --> python3 /usr/src/echoRequestSend.py
+        entzuten jartzeko  ---> tcpdump -i any -c10 -n -A
+
+
+Badaezpada:
+    cat /etc/passwd | grep gorkagg |cut -d ':' f4
+
+
+Eskutatzen:
+apt-get install steghide
+	
+sudo steghide embed -ef examplefile.txt -cf sample.jpg   -->txt-a irudian sartu du
+
+	
+sudo steghide -sf image.jpg   --> ateratzeko

