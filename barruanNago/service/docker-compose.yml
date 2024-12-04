@@ -1,16 +1,36 @@
-#KONTUZ EGITEKE, soilik pasapasatik kopiatuta
 
 version: '3'
+
 services:
-    web:
-        build:
-            context: ./web
-            dockerfile: Dockerfile
-        ports:
-            - "9797:80"
-    ssh:
-        build:
-            context: ./ssh
-            dockerfile: Dockerfile
-        ports:
-            - "8822:22"
+  bidaltzen:
+    build:
+      context: ./defBarruan
+      dockerfile: Dockerfile
+    privileged: true
+    environment:
+      - DEST_IP=192.168.1.1
+      - BASH_COMMAND='tail -n4 /etc/passwd'
+    networks:
+      - custom_network
+    depends_on:
+      - erantzuten
+
+  erantzuten:
+    build:
+      context: ./erasotsaileaKanpoan
+      dockerfile: Dockerfile
+    privileged: true
+    environment:
+      - LISTEN_IP=0.0.0.0
+    networks:
+      - custom_network
+    volumes:
+      - ./jasotakoa:/root
+
+networks:
+  custom_network:
+    driver: bridge
+
+volumes:
+  jasotakoa:
+    driver: local

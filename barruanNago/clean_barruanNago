@@ -1,6 +1,3 @@
 #!/usr/bin/env bash
 
-docker stop barruanNago_def_1 
-docker stop barruanNago_erasotzaile_1
-docker rm barruanNago_def_1 
-docker rm arruanNago_erasotzaile_1
+docker-compose down

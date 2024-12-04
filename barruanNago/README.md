@@ -1,20 +1,21 @@
 # Service definition:
 - We have two dockers: 
-1. An Ubuntu (latest version) which send the flags trought "echo request" packets in an stenography-hidden way 
-*Ubuntudun docker bat zeina icmp echo request paqueteen bitartez zerbait bidaltzen ari den. Bidalitakoa esteganografia erabiliz ezkutatuko da*
+1. An Ubuntu (latest version) which send the flags trought "echo request" packets in base64 way 
+*Ubuntudun docker bat zeina icmp echo request paqueteen bitartez zerbait bidaltzen ari den base64an kodifikatua*
 2. The one who recives the packets.
 *Pakete horiek jasotzen dituen dockerra*
 
 *Erasotzaileak, 2. dockerra soilik atzitzen du. Mezua(flag-ak) hartu eta "dekodifikatzeaz" arduratu beharko da*
 *Defentza lanean ari denak soilik lehen dockerra atzitu dezake.*
 
-Erasotzaileak bere buruari (docker2) bidalitako fitxategia "deszifratu" beharko du. Fitxategia, irudi bat izando da .doc luzeerarekin. Irudian esteganografia bitartez flag-ak sartuta egongo dira eta gero bere T-Sub makinan gorde beharko ditu
-Defentsak firewall-a ezarri eta ping-ak blokeatu edo zerbitzua bota beharko du
+Erasotzaileak bere buruari (docker2) bidalitako fitxategia "deszifratu" beharko du. Helburua tcpdump-Wireshark ariketa bat prestatzea da.Bertan doaz flag-ak base64 kodean.kin. Flag-ak gero bere T-Sub makinan gorde beharko ditu
+Defentsak firewall-a ezarri eta ping-ak blokeatu beharko ditu
 
 # Service implementation:
-Docker1 echoRequest.py fitxategia hartuko du eta zerbitzu bezala aktibatuko da. Beronek bidaliko ditu ping-ak
+Docker1 bidaltzen.py egikarituko du minutuero. Beronek bidaliko ditu ping-ak
 Docker2 "garbi" dago. Erasotzaileak zernahi instalatu ahalko dio
 
+Defentsa ezin da docker2-n sartu. Erasotzailea ezin da docker1-en sartu
 Biek erabili beharko dituzte tcpdump edo nmap tresnak zer-non gertatzen ari den jakiteko
 
 
